@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "sourceRoot": "src",
+    "experimentalDecorators": true,
+    "watch": true
+  }
+}
