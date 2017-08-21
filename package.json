@@ -1,6 +1,6 @@
 {
   "name": "easy-router",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "easy,router",
   "main": "dist/index.js",
   "repository": "https://github.com/iam2e/eouter.git",
