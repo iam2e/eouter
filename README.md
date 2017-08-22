@@ -45,3 +45,4 @@ class UserController {
 MIT
 
 [死月](https://github.com/XadillaX)
+[老雷](https://github.com/leizongmin)
