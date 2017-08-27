@@ -1,24 +1,29 @@
-export const TAG_REQ = Symbol('Req');
+export interface Model {
 
-export const REQ: Map<string, Map<string, Map<string, Set<number>>>> = new Map();
+    validate: () => boolean;
 
-export function req(method: string, type: Function): ParameterDecorator {
-    return function (target: any, key: string, index: number) {
-        const tempReq = REQ.get(target.constructor) || new Map();
-        if (!tempReq.has(key)) {
-            tempReq.set(key, new Map());
-        }
-        if (!tempReq.get(key).has(method)) {
-            tempReq.get(key).set(method, new Set());
-        }
-        tempReq.get(key).get(method).add(index);
-        REQ.set(target.constructor, tempReq);
-        target[TAG_REQ] = target.constructor[TAG_REQ] = tempReq;
-        target[key][TAG_REQ] = tempReq;
+
+    parse: () => Model;
+}
+
+/***
+ *
+ * @returns {ParameterDecorator}
+ */
+export function reqData(type: string, model: Model): ParameterDecorator {
+    return function () {
+
     }
 }
 
-export const param = (type: Function) => req('param', type);
-export const path = (type: Function) => req('path', type);
-export const query = (type: Function) => req('query', type);
-export const body = (type: Function) => req('body', type);
+export const body = (model: Model) => reqData('body', model);
+
+export const query = (model: Model) => reqData('query', model);
+
+export const param = (model: Model) => reqData('param', model);
+
+export const req = {
+    body,
+    query,
+    param
+};
