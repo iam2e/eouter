@@ -15,35 +15,36 @@ easy-router 也被占用了
 #### 未来大概是长这个样子的
 
 ```typescript
+
 @controller('/user')
-class UserController {
+class UserController extends BaseController {
 
     @post('/login')
     @res(200)
     @res(401)
-    async login(@req.body(String) userName: string, @req.body(String) passWord: string) {
+    @description('登录')
+    login(@req.context context: Context) {
 
     }
 
     @get('/:uid')
     @res(200, User)
     @res(401)
-    @res(404)
-    async getUser(@req.param(String) uid:string) {
+    info(@req.param(Number) uid: number) {
 
     }
 
     @get('s')
-    @res(200,ArrayOf(User))
+    @res(200, ArrayOf(User))
     @res(401)
-    async getUsers(@req.query(Number) pageSize:number,@req.query(Number) pageNumber:number){
+    list(@req.query(Number) pageNumber: number, @req.query(Number) pageSize: number, @req.query(String) sort: string) {
 
     }
+
+    @get('/logout')
+    logout(@req.request request: Request, @req.response response: Response) {
+
+    }
+
 }
 ```
-
-MIT
-
-[死月](https://github.com/XadillaX)
-[老雷](https://github.com/leizongmin)
-[Anders Hejlsberg](https://github.com/ahejlsberg)
