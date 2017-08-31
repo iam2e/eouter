@@ -1,8 +1,10 @@
-import {controller} from "../lib/controller";
-import {get, post} from "../lib/method";
-import {req} from "../lib/req";
-import {res} from "../lib/res";
-import {description} from "../lib/description";
+import {controller} from "../decorator/controller";
+import {get, post} from "../decorator/method";
+import {req} from "../decorator/req";
+import {res} from "../decorator/res";
+import {description} from "../decorator/description";
+
+import router from '../';
 
 interface Request {
 }
@@ -57,3 +59,5 @@ class UserController extends BaseController {
     }
 
 }
+
+console.log(router);
